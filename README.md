@@ -1,4 +1,4 @@
-# Movies
+# Peliculas
 
 Primer proyecto personal para practicar el uso de HTML, CSS y JavaScript.
 
