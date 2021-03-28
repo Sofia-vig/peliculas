@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script type="text/javascript" src="./function.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="./const.js"></script>
+
+    <!-- Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: apiKey,
+        authDomain: authDomain,
+        projectId: projectId,
+        storageBucket: storageBucket,
+        messagingSenderId: messagingSenderId,
+        appId: appId,
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <title>Peliculas</title>
+  </head>
+  <body>
+    <div>
+      <h1>| PELICULAS |</h1>
+      <!--Busqueda por Nombre-->
+      <div class="nav">
+        <input
+          type="search"
+          href="index.html"
+          placeholder="Nombre pelicula"
+          name="nombreBusqueda"
+          id="search"
+          onkeyup="searchMovie(db,document.getElementById('search').value)"
+        />
+        <!--Boton Inicio - Vuelve a index.html-->
+        <a href="#" class="inicio" onclick="getAllMovies(db)">Inicio</a>
+      </div>
+      <div id="container">
+        <!--Div peliculas-->
+        <div id="movies"></div>
+        <!--Div de la derecha con los filtros-->
+        <div id="filter">
+          <h2>Filtrar</h2>
+          <!--Filtro por genero-->
+          <h3>Genero</h3>
+          <form method="GET" action="index.html" id="generoForm">
+            <input type="radio" id="genero1" name="genero" value="Terror" />
+            <label for="genero1"> Terror</label><br />
+            <input type="radio" id="genero2" name="genero" value="Accion" />
+            <label for="genero2"> Accion</label><br />
+            <input type="radio" id="genero3" name="genero" value="Comedia" />
+            <label for="genero3"> Comedia</label><br />
+            <input type="radio" id="genero4" name="genero" value="Romance" />
+            <label for="genero4"> Romance</label><br />
+            <input type="radio" id="genero5" name="genero" value="Drama" />
+            <label for="genero5"> Drama</label><br />
+            <input type="radio" id="genero6" name="genero" value="Crimen" />
+            <label for="genero6"> Crimen</label><br />
+            <input type="radio" id="genero7" name="genero" value="Thriller" />
+            <label for="genero7"> Thriller</label><br />
+            <input type="radio" id="genero8" name="genero" value="Misterio" />
+            <label for="genero8"> Misterio</label><br />
+            <input
+              type="radio"
+              id="genero9"
+              name="genero"
+              value="Ciencia Ficcion"
+            />
+            <label for="genero9"> Ciencia Ficcion</label><br />
+            <input type="radio" id="genero10" name="genero" value="Aventura" />
+            <label for="genero10"> Aventura</label><br />
+            <input
+              type="submit"
+              name="filtro"
+              value="Buscar"
+              class="botonFiltro"
+            />
+          </form>
+          <!--Filtro por letra-->
+          <h3 class="tituloAZ">A-Z</h3>
+          <div id="a-z"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var db = firebase.firestore();
+      getAllMovies(db);
+      searchByFilmGenre(db);
+      arrayLetras();
+    </script>
+  </body>
+</html>

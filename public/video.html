@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="video.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript" src="./function.js"></script>
+    <script type="text/javascript" src="./const.js"></script>
+
+    <!-- Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: apiKey,
+        authDomain: authDomain,
+        projectId: projectId,
+        storageBucket: storageBucket,
+        messagingSenderId: messagingSenderId,
+        appId: appId,
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <title>Reproductor Video</title>
+  </head>
+  <body>
+    <div class="nav">
+      <!--Enlace inicio para volver a index.html-->
+      <a href="index.html" class="inicio">Volver a peliculas</a>
+    </div>
+    <div class="container">
+      <!--Video-->
+      <video id="video" controls src="" type="video/mp4"></video>
+    </div>
+    <!--Informacion de la pelicula: Imagen, actores, rating , generos y sinopsis-->
+    <div class="info">
+      <div><img src="" id="image" /></div>
+      <div>
+        <h1 id="title"></h1>
+        <p id="rating"></p>
+        <p id="actors"></p>
+        <p id="genero"></p>
+        <p id="sinopsis"></p>
+      </div>
+    </div>
+    <script>
+      const db = firebase.firestore();
+      video(db);
+    </script>
+  </body>
+</html>

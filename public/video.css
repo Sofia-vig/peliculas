@@ -1,0 +1,66 @@
+body {
+  font-family: "Dosis", sans-serif;
+  font-weight: 100;
+  background: #2e2e2e;
+  color: beige;
+}
+
+.container {
+  display: flex;
+  padding: 10px;
+}
+
+#video {
+  width: 80%;
+  height: 80%;
+  margin: auto;
+}
+
+.info {
+  font-family: "Dosis", sans-serif;
+  display: flex;
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+
+.info div {
+  margin: 10px;
+}
+
+.info img {
+  width: 250px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.nav .inicio {
+  text-decoration: none;
+  color: beige;
+  margin-right: 139px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 636px) {
+  .info img {
+    width: 150px;
+  }
+  #rating {
+    display: none;
+  }
+  #actors {
+    display: none;
+  }
+  #genero {
+    display: none;
+  }
+  #sinopsis {
+    display: none;
+  }
+  #title {
+    font-size: 80%;
+  }
+}
