@@ -54,39 +54,7 @@
           <h2>Filtrar</h2>
           <!--Filtro por genero-->
           <h3>Genero</h3>
-          <form method="GET" action="index.html" id="generoForm">
-            <input type="radio" id="genero1" name="genero" value="Terror" />
-            <label for="genero1"> Terror</label><br />
-            <input type="radio" id="genero2" name="genero" value="Accion" />
-            <label for="genero2"> Accion</label><br />
-            <input type="radio" id="genero3" name="genero" value="Comedia" />
-            <label for="genero3"> Comedia</label><br />
-            <input type="radio" id="genero4" name="genero" value="Romance" />
-            <label for="genero4"> Romance</label><br />
-            <input type="radio" id="genero5" name="genero" value="Drama" />
-            <label for="genero5"> Drama</label><br />
-            <input type="radio" id="genero6" name="genero" value="Crimen" />
-            <label for="genero6"> Crimen</label><br />
-            <input type="radio" id="genero7" name="genero" value="Thriller" />
-            <label for="genero7"> Thriller</label><br />
-            <input type="radio" id="genero8" name="genero" value="Misterio" />
-            <label for="genero8"> Misterio</label><br />
-            <input
-              type="radio"
-              id="genero9"
-              name="genero"
-              value="Ciencia Ficcion"
-            />
-            <label for="genero9"> Ciencia Ficcion</label><br />
-            <input type="radio" id="genero10" name="genero" value="Aventura" />
-            <label for="genero10"> Aventura</label><br />
-            <input
-              type="submit"
-              name="filtro"
-              value="Buscar"
-              class="botonFiltro"
-            />
-          </form>
+          <div id="genero"></div>
           <!--Filtro por letra-->
           <h3 class="tituloAZ">A-Z</h3>
           <div id="a-z"></div>
@@ -96,8 +64,8 @@
     <script>
       var db = firebase.firestore();
       getAllMovies(db);
-      searchByFilmGenre(db);
       arrayLetras();
+      arrayGeneros();
     </script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 const peliculas = [];
 
 function getAllMovies(db) {
-  var divMovies = "";
+  var divTodasLasPeliculas = "";
   db.collection("pelis")
     .orderBy("rating", "desc")
     .get()
@@ -10,8 +10,8 @@ function getAllMovies(db) {
         const pelicula = doc.data();
         pelicula.id = doc.id;
         peliculas.push(pelicula);
-        divMovies += divPeliculas(pelicula);
-        document.getElementById("movies").innerHTML = divMovies;
+        divTodasLasPeliculas += divGeneralPeliculas(pelicula);
+        document.getElementById("movies").innerHTML = divTodasLasPeliculas;
       });
     });
 }
@@ -28,7 +28,7 @@ function searchMovie(db, search) {
     }
   }
   peliculasFiltro.forEach((pelicula) => {
-    divSearch += divPeliculas(pelicula);
+    divSearch += divGeneralPeliculas(pelicula);
     document.getElementById("movies").innerHTML = divSearch;
   });
 }
@@ -63,31 +63,23 @@ function video(db) {
   });
 }
 
-function searchByFilmGenre(db) {
-  let params = new URLSearchParams(location.search);
-  var generoMovie = params.get("genero");
+function searchByFilmGenre(db, genero) {
+  console.log("entro");
   var divSearch = "";
-  db.collection("pelis")
-    .orderBy("rating", "desc")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const mv = doc.data();
-        mv.id = doc.id;
-        var generoEncontrado = mv.genero.find((g) => {
-          return generoMovie == g;
-        });
-        if (generoEncontrado != undefined) {
-          divSearch += `  <div class="movie">
-          <a class="image"href="video.html?id=${mv.id}" target="_blank"><img
-            src="${mv.imagen}" title="${mv.titulo}"
-          /></a>
-          <a class="title"href="video.html?id=${mv.id}" target="_blank">${mv.titulo}</a>
-      </div>`;
-          document.getElementById("movies").innerHTML = divSearch;
-        }
-      });
-    });
+  let peliculasFiltroporGenero = [];
+  for (let pelicula of peliculas) {
+    if (
+      pelicula.genero.find((g) => {
+        return g == genero;
+      })
+    ) {
+      peliculasFiltroporGenero.push(pelicula);
+    }
+  }
+  peliculasFiltroporGenero.forEach((pelicula) => {
+    divSearch += divGeneralPeliculas(pelicula);
+    document.getElementById("movies").innerHTML = divSearch;
+  });
 }
 
 function searchMovieByLetter(db, letra) {
@@ -99,12 +91,12 @@ function searchMovieByLetter(db, letra) {
     }
   }
   peliculasFiltro.forEach((pelicula) => {
-    divSearch += divPeliculas(pelicula);
+    divSearch += divGeneralPeliculas(pelicula);
     document.getElementById("movies").innerHTML = divSearch;
   });
 }
 
-function divPeliculas(pelicula) {
+function divGeneralPeliculas(pelicula) {
   const div = `
   <div class="movie">
   <a class="image"href="video.html?id=${pelicula.id}" target="_blank"><img
@@ -150,4 +142,22 @@ function arrayLetras() {
     divLetras += `<button onclick="searchMovieByLetter(db,'${letra}')">${letra}</button>`;
   });
   document.getElementById("a-z").innerHTML = divLetras;
+}
+
+function arrayGeneros() {
+  var divGeneros = "";
+  const generos = [
+    "Terror",
+    "Accion",
+    "Comedia",
+    "Crimen",
+    "Thriller",
+    "Misterio",
+    "Ciencia Ficcion",
+    "Aventura",
+  ];
+  generos.forEach((genero) => {
+    divGeneros += `<button onclick="searchByFilmGenre(db,'${genero}')">${genero}</button>`;
+  });
+  document.getElementById("genero").innerHTML = divGeneros;
 }
