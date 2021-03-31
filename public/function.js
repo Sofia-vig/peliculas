@@ -157,7 +157,9 @@ function arrayGeneros() {
     "Aventura",
   ];
   generos.forEach((genero) => {
-    divGeneros += `<button onclick="searchByFilmGenre(db,'${genero}')">${genero}</button>`;
+    divGeneros += `<input type="radio" id="${genero}" name="genero" onclick="searchByFilmGenre(db,'${genero}')"/>
+    <label for="${genero}"> ${genero}</label><br />`;
+    //divGeneros += `<button onclick="searchByFilmGenre(db,'${genero}')">${genero}</button>`;
   });
   document.getElementById("genero").innerHTML = divGeneros;
 }
