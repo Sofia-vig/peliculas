@@ -155,6 +155,8 @@ function arrayGeneros() {
     "Misterio",
     "Ciencia Ficcion",
     "Aventura",
+    "Romance",
+    "Drama",
   ];
   generos.forEach((genero) => {
     divGeneros += `<input type="radio" id="${genero}" name="genero" onclick="searchByFilmGenre(db,'${genero}')"/>
