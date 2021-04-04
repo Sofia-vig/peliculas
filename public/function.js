@@ -64,7 +64,6 @@ function video(db) {
 }
 
 function searchByFilmGenre(db, genero) {
-  console.log("entro");
   var divSearch = "";
   let peliculasFiltroporGenero = [];
   for (let pelicula of peliculas) {
