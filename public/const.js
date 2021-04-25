@@ -1,3 +1,4 @@
+//probando git
 const apiKey = "AIzaSyDUmhIdoxEmtT9XK71wMzPW6MIJmsXmsYU";
 const authDomain = "peliculas-c56c2.firebaseapp.com";
 const projectId = "peliculas-c56c2";
