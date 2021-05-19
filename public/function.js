@@ -11,7 +11,8 @@ function getAllMovies(db) {
         pelicula.id = doc.id;
         peliculas.push(pelicula);
         divTodasLasPeliculas += divGeneralPeliculas(pelicula);
-        document.getElementById("movies").innerHTML = divTodasLasPeliculas;
+        document.querySelector(".item-peliculas").innerHTML =
+          divTodasLasPeliculas;
       });
     });
 }
@@ -29,7 +30,7 @@ function searchMovie(db, search) {
   }
   peliculasFiltro.forEach((pelicula) => {
     divSearch += divGeneralPeliculas(pelicula);
-    document.getElementById("movies").innerHTML = divSearch;
+    document.querySelector(".item-peliculas").innerHTML = divSearch;
   });
 }
 
@@ -77,7 +78,7 @@ function searchByFilmGenre(db, genero) {
   }
   peliculasFiltroporGenero.forEach((pelicula) => {
     divSearch += divGeneralPeliculas(pelicula);
-    document.getElementById("movies").innerHTML = divSearch;
+    document.querySelector(".item-peliculas").innerHTML = divSearch;
   });
 }
 
@@ -91,7 +92,7 @@ function searchMovieByLetter(db, letra) {
   }
   peliculasFiltro.forEach((pelicula) => {
     divSearch += divGeneralPeliculas(pelicula);
-    document.getElementById("movies").innerHTML = divSearch;
+    document.querySelector(".item-peliculas").innerHTML = divSearch;
   });
 }
 
@@ -140,7 +141,7 @@ function arrayLetras() {
   letras.forEach((letra) => {
     divLetras += `<button onclick="searchMovieByLetter(db,'${letra}')">${letra}</button>`;
   });
-  document.getElementById("a-z").innerHTML = divLetras;
+  document.querySelector(".search-letter").innerHTML = divLetras;
 }
 
 function arrayGeneros() {
@@ -160,7 +161,6 @@ function arrayGeneros() {
   generos.forEach((genero) => {
     divGeneros += `<input type="radio" id="${genero}" name="genero" onclick="searchByFilmGenre(db,'${genero}')"/>
     <label for="${genero}"> ${genero}</label><br />`;
-    //divGeneros += `<button onclick="searchByFilmGenre(db,'${genero}')">${genero}</button>`;
   });
-  document.getElementById("genero").innerHTML = divGeneros;
+  document.querySelector(".search-genero").innerHTML = divGeneros;
 }

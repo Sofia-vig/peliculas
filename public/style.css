@@ -1,49 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: #2e2e2e;
   color: beige;
   font-family: "Dosis", sans-serif;
 }
+
 a {
   color: beige;
 }
 
-h1 {
+.titulo {
   text-align: center;
   padding: 10px;
   margin: auto;
 }
 
-#container {
+/*Header*/
+.header {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 40px;
 }
 
-#filter {
-  display: flex;
-  flex-direction: column;
-  float: right;
-  width: 20%;
-  border: 2px solid beige;
-  height: 700px;
-  border-radius: 10px;
-  margin-top: 12px;
+/*Busqueda por nombre*/
+input[type="search"] {
+  width: 170px;
+  padding: 10px 16px;
+  border-radius: 32px;
+  outline: none;
+  border: 2px solid darkgray;
+  background: rgb(20, 20, 20);
+  transition: all 0.5s;
 }
 
-#movies {
+input[type="search"]:focus {
+  background: beige;
+  width: 230px;
+}
+
+/*Link inicio*/
+.header-inicio-link {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+/*Contenido general*/
+.section-contenido {
   display: flex;
-  flex-wrap: wrap;
-  margin: auto;
+  justify-content: space-between;
+  padding: 5px 40px;
+}
+
+@media (max-width: 1100px) {
+  .section-contenido {
+    justify-content: center;
+  }
+}
+
+/*Contenedor de las peliculas*/
+.contenedor-peliculas {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+/*Div peliculas*/
+.item-peliculas {
+  display: flex;
   text-align: center;
+  justify-content: left;
+  flex-wrap: wrap;
   margin-top: 0%;
-  width: 90%;
 }
 
-.movie {
-  padding: 2px;
-  flex-direction: row;
-  margin: 5px;
-}
-
-.movie img {
+/*Imagen de cada pelicula*/
+.item-peliculas img {
   display: block;
   width: 180px;
   height: 270px;
@@ -52,112 +87,83 @@ h1 {
   transition: transform 0.5s;
 }
 
-.movie img:hover {
+@media (max-width: 770px) {
+  .contenedor-peliculas {
+    width: 100%;
+  }
+  .item-peliculas img {
+    width: 130px;
+    height: 150px;
+  }
+  .item-peliculas {
+    text-align: center;
+    justify-content: center;
+    margin-top: 0%;
+  }
+}
+
+.item-peliculas img:hover {
   transform: scale(1.03);
 }
 
-.title {
+.item-peliculas .title {
+  text-decoration: none;
+}
+
+/*Contenedor filtrados*/
+.contenedor-search-filter {
+  display: flex;
+  flex-direction: column;
+  width: 19%;
+  border: 2px solid beige;
+  height: 550px;
+  border-radius: 10px;
+}
+
+.search-filter-titulo {
   font-size: 17px;
   color: white;
   text-decoration: none;
 }
 
-.title:hover {
+.search-filter-titulo:hover {
   color: darkgray;
 }
 
-input[type="search"] {
-  width: 170px;
-  margin: 10px;
-  padding: 10px 16px;
-  border-radius: 32px;
-  outline: none;
-  border: 2px solid darkgray;
-  background: rgb(20, 20, 20);
-  transition: all 0.5s;
-}
-input[type="search"]:focus {
-  background: beige;
-  width: 230px;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-.inicio {
-  margin-top: 16px;
-  margin-right: 100px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-#filter h2 {
+.contenedor-search-filter h2 {
   text-align: center;
 }
 
-#filter h3 {
+.contenedor-search-filter h3 {
   margin-left: 20px;
   margin-bottom: 10px;
 }
-#filter #genero {
+
+/*Filtrado por genero*/
+.contenedor-search-filter .search-genero {
   margin-left: 20px;
-  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-#filter .botonFiltro {
-  margin-top: 10%;
-  margin-left: 40%;
-  background-color: #272323;
-  color: beige;
-  border: 2px solid darkgray;
-  border-radius: 32px;
-  background: rgb(20, 20, 20);
-  width: 67px;
-  height: 28px;
-  cursor: pointer;
-}
-
-#a-z {
+/*Filtrado por letras*/
+.search-letter {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 90%;
   float: left;
-  margin-left: 8%;
+  margin-left: 20px;
   align-content: center;
 }
 
-#a-z button {
+.search-letter button {
   min-width: 27px;
-  margin: 1%;
+  margin: 2px;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 872px) {
-  #filter {
+@media (max-width: 1060px) {
+  .contenedor-search-filter {
     display: none;
-  }
-}
-
-@media only screen and (max-width: 696px) {
-  .movie {
-    padding: 1px;
-    flex-direction: row;
-    margin: 1%;
-  }
-  .movie img {
-    display: block;
-    width: 80px;
-    height: 120px;
-    border-radius: 5%;
-    padding: 5px;
-    transition: transform 0.5s;
-  }
-  .title {
-    font-size: 10px;
-    color: white;
-    text-decoration: none;
   }
 }

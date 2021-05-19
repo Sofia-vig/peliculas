@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" type="text/css" />
     <script type="text/javascript" src="./function.js"></script>
+    <!--<script type="text/javascript" src="nuevo.js"></script>-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Dosis&display=swap"
@@ -31,38 +32,49 @@
     <title>Peliculas</title>
   </head>
   <body>
-    <div>
-      <h1>| PELICULAS |</h1>
-      <!--Busqueda por Nombre-->
-      <div class="nav">
+    <h1 class="titulo">| PELICULAS |</h1>
+    <!--Header-->
+    <section class="section-navegacion">
+      <header class="header">
         <input
           type="search"
           href="index.html"
           placeholder="Nombre pelicula"
           name="nombreBusqueda"
-          id="search"
-          onkeyup="searchMovie(db,document.getElementById('search').value)"
+          class="header-search-name"
+          onkeyup="searchMovie(db,document.querySelector('.header-search-name').value)"
         />
         <!--Boton Inicio - Vuelve a index.html-->
-        <a href="index.html" class="inicio" onclick="getAllMovies(db)"
+        <a
+          href="index.html"
+          class="header-inicio-link"
+          onclick="getAllMovies(db)"
           >Inicio</a
         >
-      </div>
-      <div id="container">
+      </header>
+    </section>
+    <section class="section-contenido">
+      <!--Contenedor Peliculas-->
+      <div class="contenedor-peliculas">
         <!--Div peliculas-->
-        <div id="movies"></div>
-        <!--Div de la derecha con los filtros-->
-        <div id="filter">
-          <h2>Filtrar</h2>
-          <!--Filtro por genero-->
+        <div class="item-peliculas"></div>
+      </div>
+      <!--Contenedor filtros-->
+      <div class="contenedor-search-filter">
+        <h2>Filtrar</h2>
+        <!--Filtro por genero-->
+        <div class="contenedor-genero-title">
           <h3>Genero</h3>
-          <div id="genero"></div>
-          <!--Filtro por letra-->
-          <h3 class="tituloAZ">A-Z</h3>
-          <div id="a-z"></div>
+          <div class="search-genero"></div>
+        </div>
+        <!--Filtro por letra-->
+        <div class="contenedor-letter-titulo">
+          <h3 class="search-filter-titulo">A-Z</h3>
+          <div class="search-letter"></div>
         </div>
       </div>
-    </div>
+    </section>
+
     <script>
       var db = firebase.firestore();
       getAllMovies(db);
