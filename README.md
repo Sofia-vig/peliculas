@@ -17,3 +17,5 @@
 - Filtrar por genero
 - Filtrar por primera letra del título
 - Ver el trailer con su respectiva información
+
+[Ver](https://peliculas-c56c2.firebaseapp.com/)
