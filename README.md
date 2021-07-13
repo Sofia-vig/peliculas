@@ -1,8 +1,4 @@
-*En construcción*
-
-# Peliculas
-
-### Primer proyecto personal para practicar la utilización de :
+### First personal project
 
 - Javascript
 - HTML
@@ -11,11 +7,4 @@
 - Git
 - Github
 
-### Funcionalidades:
-
-- Buscar una pelicula por su título
-- Filtrar por genero
-- Filtrar por primera letra del título
-- Ver el trailer con su respectiva información
-
-[Ver](https://peliculas-c56c2.firebaseapp.com/)
+[Page](https://peliculas-c56c2.firebaseapp.com/)
